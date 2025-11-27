@@ -19,9 +19,18 @@ const Navbar = () => {
     return (
         <div className="fixed w-full h-20 flex justify-between items-center px-4 bg-transparent text-gray-300">
 
-            {/*Logo*/}
-            <div>
-                <h1 className="font-thin text-2xl italic font-serif text-black">YOOOO</h1>
+            <div className="w-full px-10 flex items-center justify-between">
+                {/*Logo*/}
+                <div>
+                    <h1 className="font-extrabold text-2xl text-gray-900">SIDDHI MHATRE</h1>
+                </div>
+
+                <ul className="hidden md:flex gap-8 font-bold text-xl text-gray-900">
+                    <li className="hover:text-black cursor-pointer">Home</li>
+                    <li className="hover:text-black cursor-pointer">About</li>
+                    <li className="hover:text-black cursor-pointer">Experience</li>
+                    <li className="hover:text-black cursor-pointer">Projects</li>
+                </ul>
             </div>
 
             <div className="fixed left-6 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-50">
@@ -30,7 +39,7 @@ const Navbar = () => {
              hover:bg-black hover:text-white transition-colors"
                 >
                     <a
-                        href="https://linkedin.com"
+                        href="https://linkedin.com/mhatre-siddhi"
                         target="_blank"
                         rel="noreferrer"
                         className="w-12 h-12 rounded-2xl bg-white 
@@ -47,7 +56,7 @@ const Navbar = () => {
              hover:bg-black hover:text-white transition-colors"
                 >
                     <a
-                        href="https://github.com"
+                        href="https://github.com/siddhimh"
                         target="_blank"
                         rel="noreferrer"
                         className="w-12 h-12 rounded-2xl bg-white 
@@ -65,7 +74,7 @@ const Navbar = () => {
              hover:bg-black hover:text-white transition-colors"
                 >
                     <a
-                        href="https://github.com"
+                        href="https://github.com/siddhimh"
                         target="_blank"
                         rel="noreferrer"
                         className="w-12 h-12 rounded-2xl bg-white 
@@ -84,7 +93,7 @@ const Navbar = () => {
              hover:bg-black hover:text-white transition-colors"
                 >
                     <a
-                        href="https://github.com"
+                        href="mailto:sm13610@nyu.edu"
                         target="_blank"
                         rel="noreferrer"
                         className="w-12 h-12 rounded-2xl bg-white 
