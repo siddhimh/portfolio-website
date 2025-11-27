@@ -1,15 +1,11 @@
-import React, { useState } from 'react'; 
+import React, { useState } from "react";
 // Import icons we'll use for our navbar
-import {
-  FaBars,
-  FaTimes,
-  FaGithub,
-  FaLinkedin,
-} from 'react-icons/fa';
-import { HiOutlineMail } from 'react-icons/hi';
-import { BsFillPersonLinesFill } from 'react-icons/bs';
+import { FaBars, FaTimes, FaGithub, FaLinkedin, FaPhone, FaVoicemail } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/hi";
+import { BsFillPersonLinesFill } from "react-icons/bs";
 // Import Link for smooth scrolling between sections
-import { Link } from 'react-scroll';
+import { Link } from "react-scroll";
+
 
 const Navbar = () => {
   // State to handle mobile menu toggle (open/closed)
@@ -18,53 +14,44 @@ const Navbar = () => {
 
   return (
     // Main navbar container - fixed at top, full width
-    <div className='fixed w-full h-20 flex justify-between items-center px-4 bg-slate-900 text-gray-300'>
+    <div className="fixed w-full h-20 flex justify-between items-center px-4 bg-slate-900 text-gray-300">
       {/* Your logo or brand name */}
       <div>
-        <h1 className='font-thin text-2xl italic font-serif'>TB</h1>
+        <h1 className="font-thin text-2xl italic font-serif">YOOOO</h1>
       </div>
 
-      {/* Desktop Menu - hidden on mobile, flex on medium screens and up */}
-      <ul className='hidden md:flex gap-x-8'>
-        <li>
-          <Link to='home' smooth={true} duration={500}>
-            Home
-          </Link>
-        </li>
-        {/* ... other menu items ... */}
-      </ul>
+      <div className="fixed left-6 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-50">
+        <button
+          class="w-12 h-12 rounded-2xl bg-white/90 shadow-md flex items-center justify-center
+             hover:bg-black hover:text-white transition-colors"
+        >
+         <a href="https://linkedin.com" className='flex justify-between items-center w-full text-gray-300 px-4'>
+              LinkedIn <FaLinkedin size={30} /> </a>
+        </button>
 
-      {/* Hamburger Icon - visible only on mobile */}
-      <div onClick={handleClick} className='md:hidden z-10 cursor-pointer'>
-        {!nav ? <FaBars size={20} /> : <FaTimes size={20} />}
-      </div>
+        <button
+          className="w-12 h-12 rounded-2xl bg-white/90 shadow-md flex items-center justify-center
+             hover:bg-black hover:text-white transition-colors"
+        >
+         <a href="https://linkedin.com" className='flex justify-between items-center w-full text-gray-300 px-4'>
+              LinkedIn <FaGithub size={30} /> </a>
+        </button>
 
-      {/* Mobile Menu - full screen overlay */}
-      <ul className={!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen bg-slate-900 flex flex-col justify-center items-center'}>
-        <li className='py-6 text-4xl'>
-          <Link onClick={handleClick} to='home' smooth={true} duration={500}>
-            Home
-          </Link>
-        </li>
-        {/* ... other mobile menu items ... */}
-      </ul>
+        <button
+          className="w-12 h-12 rounded-2xl bg-white/90 shadow-md flex items-center justify-center
+             hover:bg-black hover:text-white transition-colors"
+        >
+         <a href="https://linkedin.com" className='flex justify-between items-center w-full text-gray-300 px-4'>
+              LinkedIn <FaPhone size={30} /> </a>
+        </button>
 
-      {/* Social icons - hidden on smaller screens, shown on large screens */}
-      <div className='hidden lg:flex fixed flex-col top-[35%] left-0'>
-        <ul>
-          {/* LinkedIn - sliding animation on hover */}
-          <li className='w-40 h-14 flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-blue-600'>
-            <a href="https://linkedin.com" className='flex justify-between items-center w-full text-gray-300 px-4'>
-              LinkedIn <FaLinkedin size={30} />
-            </a>
-          </li>
-          <li className='w-40 h-14 flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-blue-600'>
-            <a href="https://github.com" className='flex justify-between items-center w-full text-gray-300 px-4'>
-              GitHub <FaGithub size={30} />
-            </a>
-          </li>
-          {/* ... other social links ... */}
-        </ul>
+        <button
+          className="w-12 h-12 rounded-2xl bg-white/90 shadow-md flex items-center justify-center
+             hover:bg-black hover:text-white transition-colors"
+        >
+          <a href="https://linkedin.com" className='flex justify-between items-center w-full text-gray-300 px-4'>
+              LinkedIn <FaVoicemail size={30} /> </a>
+        </button>
       </div>
     </div>
   );
