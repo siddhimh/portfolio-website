@@ -1,54 +1,51 @@
-// import React from "react";
+import React from "react";
+import ProfilePic from "../assets/me.png"; // Replace with your image path
 
-
-// const About = () => {
-//   return (
-//     // Main container with full width/height and background
-//     <div
-//       name="about"
-//       id="about"
-//       className="w-full h-screen bg-[#0a192f] text-gray-300"
-//     >
-//       {/*Content container with cyan background*/}
-//       <div className="flex flex-col justify-center items-center w-full h-full">
-//         {/*Title section using grid */}
-//         <div className="py-16 rounded-md bg-cyan-800 flex flex-col justify-center items-center w-4/6">
-//           <div className="max-w-[1000px] w-full grid grid-cols-2 gap-8 mb-4">
-//             <div className="sm:text-right pb-8 pl-4">
-//               <p className="text-4xl font-bold inline border-b-4 border-cyan-500">
-//                 About
-//               </p>
-//             </div>
-//             <div></div>
-//             {/*Content section with responsive grid*/}
-//           </div>
-//           <div className="max-w-[1000px] w-full grid sm:grid-cols-2 gap-8 px-4">
-//             <div className="sm:text-right text-4xl font-bold">
-//               <p>
-//                 Hi. I'm Taminoturoko Briggs, nice to meet you. Please take a
-//                 look around.
-//               </p>
-//             </div>
-//             <div>
-//               <p>
-//                 A software developer with experience in building Responsive and
-//                 Scalable Web apps...
-//               </p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-
-// export default About;
-import React from 'react'
-
-function About() {
+const About = () => {
   return (
-    <div>About</div> 
-  )
-}
-export default About
+    <div id="about" className="w-full bg-white text-black px-6 py-16">
+      <div className="max-w-screen-lg mx-auto flex flex-col gap-10">
+       <div className="mb-6 inline-block">
+ <h2 className="text-3xl sm:text-4xl font-extrabold tracking-wide relative inline-block mb-6">
+  #about me
+  <span className="block h-[4px] bg-black mt-3 w-full"></span>
+</h2>
+
+</div>
+
+
+        {/* Content Row */}
+        <div className="flex flex-col md:flex-row items-start gap-10">
+          {/* Text - Left */}
+          <div className="md:w-1/2">
+            <p className="text-gray-800 text-lg leading-relaxed mb-4">
+              Hello! I am Siddhi Mhatre, a passionate backend developer and
+              aspiring AR/game developer. I love building efficient, scalable
+              systems and exploring how data flows to power amazing user
+              experiences. In my projects, I combine creativity with technical
+              expertise to craft interactive and polished applications.
+            </p>
+            <p className="text-gray-800 text-lg leading-relaxed mb-4">
+              I enjoy diving deep into technologies like Node.js, React,
+              MongoDB, and Docker, combining them to craft high-performance
+              applications. I am also fascinated by AR/VR and interactive gaming
+              experiences, constantly exploring how immersive technology can
+              merge with real-world problem solving.
+            </p>
+          </div>
+
+          {/* Photo - Right */}
+          <div className="md:w-1/2 flex justify-center">
+            <img
+              src={ProfilePic}
+              alt="Profile"
+              className="w-64 h-64 object-cover rounded-2xl shadow-lg hover:scale-105 transition-transform"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default About;
