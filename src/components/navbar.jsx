@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { FaGithub, FaLinkedin, FaPhone, FaEnvelope } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import Home from "./home";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsFillPersonLinesFill } from "react-icons/bs";
@@ -9,146 +9,106 @@ import { Link } from "react-scroll";
 const Navbar = () => {
   // State to handle mobile menu toggle (open/closed)
   const [nav, setNav] = useState(false);
+  const [activeSection, setActiveSection] = useState("Home");
   const handleClick = () => setNav(!nav);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["Home", "About", "Work", "Projects", "Skills"];
+      const scrollPosition = window.scrollY + 100;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { to: "Home", label: "Home" },
+    { to: "About", label: "About" },
+    { to: "Work", label: "Experience" },
+    { to: "Projects", label: "Projects" },
+    { to: "Skills", label: "Skills" },
+  ];
+
   return (
-    <div className="fixed w-full h-20 flex justify-between items-center px-4 bg-transparent text-gray-300">
+    <div className="fixed w-full h-20 flex justify-between items-center px-4 bg-white/80 backdrop-blur-sm text-gray-300 z-40 shadow-sm">
       <div className="w-full px-10 flex items-center justify-between">
-        {/*Logo*/}
+        {/*Logo with hover effect*/}
         <div>
-          <h1 className="font-extrabold text-2xl text-gray-900">
+          <Link
+            to="Home"
+            smooth
+            duration={500}
+            className="font-extrabold text-2xl text-gray-900 cursor-pointer hover:text-black transition-colors"
+          >
             SIDDHI MHATRE
-          </h1>
+          </Link>
         </div>
 
         <ul className="hidden md:flex gap-8 font-bold text-xl text-gray-900">
-          <li>
-            <Link
-              to="Home"
-              smooth
-              duration={500}
-              className="hover:text-black cursor-pointer"
-            >
-              Home
-            </Link>
-          </li>
-
-          <li>
-            <Link
-              to="About"
-              smooth
-              duration={500}
-              className="hover:text-black cursor-pointer"
-            >
-              About
-            </Link>
-          </li>
-
-          <li>
-            <Link
-              to="Experience"
-              smooth
-              duration={500}
-              className="hover:text-black cursor-pointer"
-            >
-              Experience
-            </Link>
-          </li>
-
-          <li>
-            <Link
-              to="Skills"
-              smooth
-              duration={500}
-              className="hover:text-black cursor-pointer"
-            >
-              Skills
-            </Link>
-          </li>
-
-          <li>
-            <Link
-              to="Projects"
-              smooth
-              duration={500}
-              className="hover:text-black cursor-pointer"
-            >
-              Projects
-            </Link>
-          </li>
+          {navLinks.map((link) => (
+            <li key={link.to}>
+              <Link
+                to={link.to}
+                smooth
+                duration={500}
+                className={`
+                  cursor-pointer transition-all duration-300 relative
+                  ${activeSection === link.to 
+                    ? 'text-black border-b-2 border-black' 
+                    : 'text-gray-700 hover:text-black'}
+                `}
+                onSetActive={() => setActiveSection(link.to)}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
 
-      <div className="fixed left-6 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-50">
-        <button
-          className="w-12 h-12 rounded-2xl bg-white/90 shadow-md flex items-center justify-center
-             hover:bg-black hover:text-white transition-colors"
+      {/* Left Sidebar - Social Media Icons - Fixed and centered vertically */}
+      <div className="fixed left-6 top-0 h-screen flex items-center justify-center z-50 pointer-events-none">
+        <div className="flex flex-col gap-4 pointer-events-auto">
+        <a
+          href="https://linkedin.com/in/mhatre-siddhi"
+          target="_blank"
+          rel="noreferrer"
+          className="w-12 h-12 rounded-2xl bg-white shadow-md flex items-center justify-center
+             text-black hover:scale-110 hover:rotate-6
+             transition-all duration-300 group"
         >
-          <a
-            href="https://linkedin.com/mhatre-siddhi"
-            target="_blank"
-            rel="noreferrer"
-            className="w-12 h-12 rounded-2xl bg-white 
-             flex items-center justify-center
-             text-black hover:bg-slate-800 hover:text-white
-             transition-colors"
-          >
-            <FaLinkedin size={24} />
-          </a>
-        </button>
+          <FaLinkedin size={24} className="group-hover:scale-110 transition-transform text-black" />
+        </a>
 
-        <button
-          className="w-12 h-12 rounded-2xl bg-white/90 shadow-md flex items-center justify-center
-             hover:bg-black hover:text-white transition-colors"
+        <a
+          href="https://github.com/siddhimh"
+          target="_blank"
+          rel="noreferrer"
+          className="w-12 h-12 rounded-2xl bg-white shadow-md flex items-center justify-center
+             text-black hover:scale-110 hover:rotate-6
+             transition-all duration-300 group"
         >
-          <a
-            href="https://github.com/siddhimh"
-            target="_blank"
-            rel="noreferrer"
-            className="w-12 h-12 rounded-2xl bg-white 
-             flex items-center justify-center
-             text-black hover:bg-slate-800 hover:text-white
-             transition-colors"
-          >
-            <FaGithub size={24} />
-          </a>
-        </button>
+          <FaGithub size={24} className="group-hover:scale-110 transition-transform text-black" />
+        </a>
 
-
-
-        <button
-          className="w-12 h-12 rounded-2xl bg-white/90 shadow-md flex items-center justify-center
-             hover:bg-black hover:text-white transition-colors"
+        <a
+          href="mailto:sm13610@nyu.edu"
+          className="w-12 h-12 rounded-2xl bg-white shadow-md flex items-center justify-center
+             text-black hover:scale-110 hover:rotate-6
+             transition-all duration-300 group"
         >
-          <a
-            href="https://github.com/siddhimh"
-            target="_blank"
-            rel="noreferrer"
-            className="w-12 h-12 rounded-2xl bg-white 
-             flex items-center justify-center
-             text-black hover:bg-slate-800 hover:text-white
-             transition-colors"
-          >
-            <FaPhone size={24} />
-          </a>
-        </button>
-
-        <button
-          className="w-12 h-12 rounded-2xl bg-white/90 shadow-md flex items-center justify-center
-             hover:bg-black hover:text-white transition-colors"
-        >
-          <a
-            href="mailto:sm13610@nyu.edu"
-            target="_blank"
-            rel="noreferrer"
-            className="w-12 h-12 rounded-2xl bg-white 
-             flex items-center justify-center
-             text-black hover:bg-slate-800 hover:text-white
-             transition-colors"
-          >
-            <FaEnvelope size={24} />
-          </a>
-        </button>
+          <FaEnvelope size={22} className="group-hover:scale-110 transition-transform text-black" />
+        </a>
+        </div>
       </div>
     </div>
   );
